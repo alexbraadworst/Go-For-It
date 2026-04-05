@@ -16,3 +16,13 @@ label rel_1848_bavaria_scandal:
     b "A-and then..."
 
     jump turn_start
+
+label rel_1848_baden_rebellion:
+
+    jump turn_start
+
+label rel_1848_hanover_panic:
+    jump turn_start
+
+label rel_1848_mecklenburg_date:
+    jump turn_start

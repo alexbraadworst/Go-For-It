@@ -11,6 +11,7 @@ label fail_1848_crackdown:
     $ MainMenu(confirm=False)()
 
 label fail_state_crown:
+    scene bg classroom
     show prussia angry at center with vpunch
     
     p "Wait, why did I just say that?! My army isn't ready!"
@@ -18,9 +19,10 @@ label fail_state_crown:
     "Austria and Russia, terrified of a liberal, Prussian-led Germany, immediately mobilize."
     "Prussia is invaded on two fronts and utterly dismantled. The King is forced to abdicate."
     
-    p "We needed to isolate Austria diplomatically and reform the army first! Did you sleep through the entire unit on Realpolitik?!"
+    p "Did you even read the textbook!?!? That's like the one thing the dude's known for!"
     
-    "HISTORICAL INACCURACY DETECTED. F IN AP EURO."
+    "Prussia-chan drops your grade to a 0!"
+    "By the way, if you're salty about losing, remember to save next time..."
     
     # Kick them to the main menu!
     $ MainMenu(confirm=False)()

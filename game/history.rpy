@@ -1,20 +1,12 @@
 init python:
     # self improvement
     historical_self = {
-        1848: [
-            {
-                "name": "Construct the Prussian State Telegraph",
-                "cost": {"ap": 2},
-                "reward": {"blood": 10, "iron": 5, "threat": 5}, 
-                "target": "action_state_telegraph"
-            }
-        ],
         1849: [
             {
                 "name": "Construct the Prussian State Telegraph",
                 "cost": {"ap": 2},
                 "reward": {"blood": 10, "iron": 5, "threat": 5}, 
-                "target": "action_state_telegraph"
+                "target": "self_1849_telegraph"
             }
         ],
         1862: [
@@ -22,7 +14,7 @@ init python:
                 "name": "Deliver 'Blood and Iron' Speech",
                 "cost": {"ap": 2},
                 "reward": {"blood": 15, "iron": 15, "threat": 10},
-                "target": "event_speech_1862"
+                "target": "self_speech_1862"
             }
         ]
     }
@@ -30,19 +22,33 @@ init python:
         {
             "name": "Study Machiavelli",
             "cost": {"ap": 1},
-            "reward": {"iron": 2},
-            "target": "action_study"
+            "reward": {"blood": 2, "iron": 1},
+            "target": "self_study"
         },
         {
             "name": "Military Drilling",
             "cost": {"ap": 2},
             "reward": {"blood": 5},
-            "target": "action_drill"
+            "target": "self_drill"
+        },
+        {
+            "name": "Fund Krupp Armaments",
+            "cost": {"ap": 2},
+            "reward": {"iron": 10, "threat": 5},
+            "target": "action_krupp"
         }
     ]
 
     # foreign diplomacy
     historical_diplomacy = {
+        1848: [
+            {
+                "name": "Discuss Duckwitz's Tariff Plan",
+                "cost": {"ap": 2},
+                "reward": {"iron": 10},
+                "target": "diplo_1848_duckwitz"
+            }
+        ],
         1864: [
             {
                 "name": "Intervene in Schleswig-Holstein",
@@ -58,12 +64,6 @@ init python:
             "cost": {"ap": 1},
             "reward": {"threat": -5},
             "target": "action_placate_austria"
-        },
-        {
-            "name": "Fund Krupp Armaments",
-            "cost": {"ap": 2},
-            "reward": {"iron": 10, "threat": 5},
-            "target": "action_krupp"
         }
     ]
 
@@ -149,11 +149,12 @@ init python:
         {
             "name": "Send beer kegs to Bavaria",
             "cost": {"ap": 2},
+            "req_affection": {"Bavaria": 50},
             "reward": {
-                "affection_Bavaria": 15, 
+                "affection_Bavaria": 5, 
                 "affection_Baden-Wurttemberg": 5 # BFF bonus!
             },
-            "target": "action_bavaria_drink"
+            "target": "rel_bavaria_drink"
         },
         {
             "name": "Remind Baden-Wurttemberg about Marianne (France)",
@@ -162,7 +163,7 @@ init python:
                 "affection_Baden-Wurttemberg": 10, # Fear makes them clingy
                 "threat": -5
             },
-            "target": "action_scare_baden"
+            "target": "rel_scare_baden"
         },
         {
             "name": "Help Mecklenburg-Vorpommern with the harvest",
@@ -171,16 +172,18 @@ init python:
                 "affection_Mecklenburg-Vorpommern": 10,
                 "blood": 5
             },
-            "target": "action_farm_mecklenburg"
+            "target": "rel_farm_mecklenburg"
         },
         {
             "name": "Host a lavish gala for Saxony and Austria",
             "cost": {"ap": 3},
+            "req_affection": {"Saxony": 40},
             "reward": {
-                "affection_Saxony": 20, # Costs a lot to win over the hater
+                "affection_Saxony": 10, # Costs a lot to win over the hater
+                "iron": -5,
                 "threat": -10
             },
-            "target": "action_saxony_gala"
+            "target": "rel_saxony_gala"
         },
         {
             "name": "Invite Holstein to a German culture festival",

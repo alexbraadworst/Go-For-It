@@ -28,5 +28,9 @@ define fwiv = Character("Frederick William IV")
 # Denmark
 define fvii = Character("Frederick VII of Denmark")
 
-# prussian officials
+# officials
 define wrangel = Character("Generalfeldmarschall Friedrich von Wrangel")
+define duckwitz = Character("Arnold Duckwitz")
+
+#industrialists
+define siemens = Character("Werner von Siemens")

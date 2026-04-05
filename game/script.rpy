@@ -2,6 +2,7 @@
 # name of the character.
 default year = 1848
 default action_points = 8
+default actions_taken_this_year = []
 default max_ap = 8
 default played_events = [] # A list to track which years we've already seen
 
@@ -82,31 +83,33 @@ label turn_start:
     if chosen_action == "advance_year":
         $ year += 1
         $ action_points = max_ap # Replace 5 with whatever their max AP should be!
+        $ actions_taken_this_year = []
         
-        # Jumping back to the top triggers the next year's historical events
         jump turn_start
-    
-    # --- DEDUCT ACTION POINTS ---
-    $ action_points -= chosen_action["cost"].get("ap", 0)
 
-    # --- APPLY PROGRESSION & THREAT ---
-    if "reward" in chosen_action:
-        $ blood += chosen_action["reward"].get("blood", 0)
-        $ iron += chosen_action["reward"].get("iron", 0)
-        $ threat += chosen_action["reward"].get("threat", 0)
-        
-        # loops through every state in suitor list.
-        python:
-            for state in suitor_relations.keys():
-                reward_key = "affection_" + state
-                if reward_key in chosen_action["reward"]:
-                    suitor_relations[state] += chosen_action["reward"][reward_key]
-                    
-                    # Cap affection at 100 and prevent it from dropping below 0
-                    if suitor_relations[state] > 100:
-                        suitor_relations[state] = 100
-                    elif suitor_relations[state] < 0:
-                        suitor_relations[state] = 0
+    else:
+        $ action_points -= chosen_action["cost"].get("ap", 0)
+
+        $ actions_taken_this_year = actions_taken_this_year + [chosen_action["target"]]
+
+        # --- APPLY PROGRESSION & THREAT ---
+        if "reward" in chosen_action:
+            $ blood += chosen_action["reward"].get("blood", 0)
+            $ iron += chosen_action["reward"].get("iron", 0)
+            $ threat += chosen_action["reward"].get("threat", 0)
+            
+            # loops through every state in suitor list.
+            python:
+                for state in suitor_relations.keys():
+                    reward_key = "affection_" + state
+                    if reward_key in chosen_action["reward"]:
+                        suitor_relations[state] += chosen_action["reward"][reward_key]
+                        
+                        # Cap affection at 100 and prevent it from dropping below 0
+                        if suitor_relations[state] > 100:
+                            suitor_relations[state] = 100
+                        elif suitor_relations[state] < 0:
+                            suitor_relations[state] = 0
     
     # --- DYNAMIC JUMP ---
     $ target_label = chosen_action["target"]

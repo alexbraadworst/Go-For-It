@@ -54,9 +54,6 @@ label event_1848:
 
     "On the 18th, these delegates solemnly make their way to the Paulskirche in Frankfurt for the first session."
 
-    jump event_1848_frankfurt
-
-label event_1848_frankfurt:
     scene bg frankfurt parliament alt
     
     "Months pass, and it is now October. The National Assembly has convened once again at the Paulskirche in Frankfurt."
@@ -85,9 +82,116 @@ label event_1848_frankfurt:
     
     "The tension in the room is palpable. You have a brief window to sway the delegates before the final debate, next year."
 
-    "Focus on building greater relationships with your fellow German states in the Relationships tab."
+    "Focus on building greater relationships with your fellow German states in the Relationships tab and Diplomacy tab."
     
     return
+
+label event_1849:
+    
+    "April 1849. Prussian troops have crushed popular movements across the Confederation."
+
+    "Friedrich Wilhelm IV has additionally reasserted his authority, dissolving the Prussian Constituent Assembly."
+
+    "Despite all this, the Parliament has reconvened for the final vote on the constitution."
+    
+    show austria angry at right
+    
+    a "This is a farce! Austria will not divide her empire just to appease a room full of liberal academics!"
+    
+    a "If you demand we leave Hungary and Italy behind, then we withdraw from this assembly entirely!"
+    
+    hide austria
+    
+    show prussia smug at left
+    
+    p "Don't let the door hit you on the way out."
+    
+    "With Austria's dramatic exit, the 'Grossdeutschland' solution is dead. The Parliament defaults to 'Kleindeutschland'."
+    
+    # wooed the south
+    if suitor_relations.get("Bavaria", 0) >= 40 and suitor_relations.get("Baden-Wurttemberg", 0) >= 50:
+        show prussia smug at left
+        
+        p "Look at them. All those loudmouthed liberals and minor princes, finally falling in line."
+
+        p "Bavaria is practically eating out of my hand, and Baden knows exactly who keeps their throne safe from republican mobs."
+
+        show prussia joyful
+        
+        p "Without the South, Austria's 'Grossdeutschland' is nothing but a phantom. They have no leverage left."
+        
+        p "I played this perfectly. The Austrian Empire is locked out, and the lesser German states are exactly where they belong: under my wing."
+        
+        "The smaller states rally behind you. You have successfully isolated Austria from the rest of the Confederation."
+        $ iron += 10
+        $ threat -= 5
+        
+    elif suitor_relations.get("Bavaria", 0) >= 40:
+        show prussia frustrated at left
+        
+        p "Bavaria is with me, thank God. That cuts off Austria's main avenue of influence."
+        
+        show prussia intense
+        
+        p "But Baden... I should have marched down there and crushed that uprising myself instead of playing politics."
+        p "A fragmented South is dangerous. I have the majority, but it's a messy, bleeding majority."
+        p "Austria isn't gone for good. They're going to use this division against me later. I can already feel a headache coming on."
+        
+        "You secure the vote, but the lack of total southern unity leaves your flank exposed."
+        $ threat += 5
+        
+    else:
+        show prussia frustrated at left with vpunch
+        
+        p "Damn it. Damn it all."
+        p "Bavaria is actively whispering with the Austrian delegation. I can see them glaring at me from across the aisles."
+        
+        show prussia sad
+        
+        p "The entire southern bloc is slipping right through my fingers. What the hell was I doing all year? Wasting time on internal bureaucracy while Vienna stole my suitors?!"
+        
+        show prussia intense
+        
+        p "Fine. If they won't be wooed by diplomacy and commerce... they'll have to be broken by iron. But that's a war I'm not ready for yet."
+        
+        "You failed to secure the southern bloc. Austria looks incredibly smug as the states remain divided."
+        $ iron -= 5
+        $ threat += 25
+        
+    "Regardless of the southern grumbling, the Parliament finalizes the constitution. They send an imperial deputation to Berlin."
+    
+    scene bg sanssouci
+    show prussia normal at left
+    show fwiv at right
+    
+    "The delegates arrive, carrying the drafted constitution. They offer King Friedrich Wilhelm IV the title: 'Emperor of the Germans'."
+    
+    fwiv "They... they want me to be Emperor? Of a united Germany?"
+    
+    p "Don't get too excited. Look at who is offering it. They expect you to answer to a parliament."
+    
+    menu:
+        "Accept the crown.":
+            show prussia joyful
+            p "Take it! We win! Germany is ours!"
+            fwiv "Yes! I accept the will of the people! I am Emperor!"
+            jump fail_state_crown
+
+        "Refuse the 'Crown from the Gutter'":
+            p "Don't take a crown from the gutter! Tell them no."
+
+            fwiv "You are exactly right. I rule by the grace of God, not by the permission of bakers and lawyers."
+            
+            fwiv "I refuse your crown! Get out of my palace!"
+            
+            "The deputation leaves in absolute disgrace."
+            "Without Prussian backing, the Frankfurt Parliament collapses. The revolution is effectively over. The old conservative order is restored."
+            
+            $ threat -= 15
+            $ blood += 5
+            
+            # Drops them safely back into the hub to start their 1849 turn!
+            return
 
 
 label event_1862:

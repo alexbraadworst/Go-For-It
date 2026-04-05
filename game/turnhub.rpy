@@ -9,7 +9,7 @@ screen main_turn_screen():
         # stats
         frame:
             xsize 1600
-            padding (20, 15) # height to automatically fits the 50x50 images
+            padding (20, 15) 
             
             hbox:
                 align (0.5, 0.5)
@@ -26,16 +26,13 @@ screen main_turn_screen():
                 
                 image "threat" size (50, 50) yalign 0.5
                 text "Threat: [threat]" yalign 0.5 size 28
-
                 null width 50 
 
                 textbutton "Advance Year":
                     yalign 0.5
                     text_size 28
                     text_bold True
-                    
                     action Return("advance_year") 
-                    # Only clickable when AP is 0 
                     sensitive (action_points <= 0)
         
         # main window
@@ -45,7 +42,6 @@ screen main_turn_screen():
             
             vbox:
                 spacing 15
-
                 # tabs
                 hbox:
                     spacing 5
@@ -73,21 +69,37 @@ screen main_turn_screen():
                             if current_historical_actions:
                                 text "Historical Events:" bold True color "#b22222"
                                 for action in current_historical_actions:
-                                    $ cost_ap = action["cost"].get("ap", 0)
-                                    $ can_afford = (action_points >= cost_ap)
-                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                        action Return(action) 
-                                        sensitive can_afford
+                                    if action["name"] in actions_taken_this_year:
+                                        textbutton "[action['name']] (Completed)":
+                                            action NullAction()
+                                            sensitive False
+                                        
+                                    else:
+                                        # Only calculate the cost if we actually need to draw the button
+                                        $ cost_ap = action["cost"].get("ap", 0)
+                                        $ can_afford = (action_points >= cost_ap)
+                                        
+                                        textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                            action Return(action) 
+                                            sensitive can_afford
                                         
                             null height 10 
                             
                             text "Standard Actions:" bold True
                             for action in standard_self:
-                                $ cost_ap = action["cost"].get("ap", 0)
-                                $ can_afford = (action_points >= cost_ap)
-                                textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                    action Return(action) 
-                                    sensitive can_afford
+                                if action["name"] in actions_taken_this_year:
+                                        textbutton "[action['name']] (Completed)":
+                                            action NullAction()
+                                            sensitive False
+                                        
+                                else:
+                                    # Only calculate the cost if we actually need to draw the button
+                                    $ cost_ap = action["cost"].get("ap", 0)
+                                    $ can_afford = (action_points >= cost_ap)
+                                    
+                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                        action Return(action) 
+                                        sensitive can_afford
 
                     # diplomacy tab
                     elif current_tab == "diplomacy":
@@ -99,21 +111,37 @@ screen main_turn_screen():
                             if current_historical_actions:
                                 text "Historical Events:" bold True color "#b22222"
                                 for action in current_historical_actions:
-                                    $ cost_ap = action["cost"].get("ap", 0)
-                                    $ can_afford = (action_points >= cost_ap)
-                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                        action Return(action) 
-                                        sensitive can_afford
+                                    if action["name"] in actions_taken_this_year:
+                                        textbutton "[action['name']] (Completed)":
+                                            action NullAction()
+                                            sensitive False
+                                        
+                                    else:
+                                        # Only calculate the cost if we actually need to draw the button
+                                        $ cost_ap = action["cost"].get("ap", 0)
+                                        $ can_afford = (action_points >= cost_ap)
+                                        
+                                        textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                            action Return(action) 
+                                            sensitive can_afford
                                         
                             null height 10
                             
                             text "Standard Actions:" bold True
                             for action in standard_diplomacy:
-                                $ cost_ap = action["cost"].get("ap", 0)
-                                $ can_afford = (action_points >= cost_ap)
-                                textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                    action Return(action) 
-                                    sensitive can_afford
+                                if action["name"] in actions_taken_this_year:
+                                    textbutton "[action['name']] (Completed)":
+                                        action NullAction()
+                                        sensitive False
+                                        
+                                else:
+                                    # Only calculate the cost if we actually need to draw the button
+                                    $ cost_ap = action["cost"].get("ap", 0)
+                                    $ can_afford = (action_points >= cost_ap)
+                                    
+                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                        action Return(action) 
+                                        sensitive can_afford
 
                     # relationships tab
                     elif current_tab == "relationships":
@@ -122,7 +150,7 @@ screen main_turn_screen():
                             
                             # suitor meters
                             vbox:
-                                xsize 960 # Takes up about 60% of the screen width
+                                xsize 960 
                                 spacing 15
                                 text "Intra-German 'Relations' - [year]" size 30 bold True
 
@@ -137,7 +165,7 @@ screen main_turn_screen():
                                         
                                         for state, affection in suitor_relations.items():
                                             frame:
-                                                xysize (460, 100) # sized so two fit in the 960w grid
+                                                xysize (460, 100)
                                                 padding (10, 10)
                                                 
                                                 hbox:
@@ -163,11 +191,10 @@ screen main_turn_screen():
 
                             # actions
                             vbox:
-                                xsize 530 # takes up the remaining 40%
+                                xsize 530
                                 spacing 15
                                 text "Available Actions:" bold True size 30
                                 
-                                # actions in their own viewport for infinite buttons
                                 viewport:
                                     xysize (530, 580)
                                     scrollbars "vertical"
@@ -180,18 +207,47 @@ screen main_turn_screen():
                                         if current_historical_actions:
                                             text "Historical Opportunities:" bold True color "#b22222"
                                             for action in current_historical_actions:
-                                                $ cost_ap = action["cost"].get("ap", 0)
-                                                $ can_afford = (action_points >= cost_ap)
-                                                textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                                    action Return(action) 
-                                                    sensitive can_afford
+                                                if action["name"] in actions_taken_this_year:
+                                                    textbutton "[action['name']] (Completed)":
+                                                        action NullAction()
+                                                        sensitive False
+                                                        
+                                                else:
+                                                    # Only calculate the cost if we actually need to draw the button
+                                                    $ cost_ap = action["cost"].get("ap", 0)
+                                                    $ can_afford = (action_points >= cost_ap)
+                                                    
+                                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                                        action Return(action) 
+                                                        sensitive can_afford
                                         
                                         null height 10
                                         
                                         text "Standard Actions:" bold True
                                         for action in standard_relations:
-                                            $ cost_ap = action["cost"].get("ap", 0)
-                                            $ can_afford = (action_points >= cost_ap)
-                                            textbutton "[action['name']] (Cost: [cost_ap] AP)":
-                                                action Return(action) 
-                                                sensitive can_afford
+                                            $ show_button = True
+                                            
+                                            if "req_affection" in action:
+                                                for state, required_score in action["req_affection"].items():
+                                                    if suitor_relations.get(state, 0) < required_score:
+                                                        $ show_button = False
+                                                        
+                                            if "max_affection" in action:
+                                                for state, max_score in action["max_affection"].items():
+                                                    if suitor_relations.get(state, 0) > max_score:
+                                                        $ show_button = False
+
+                                            if show_button:
+                                                if action["name"] in actions_taken_this_year:
+                                                    textbutton "[action['name']] (Completed)":
+                                                        action NullAction()
+                                                        sensitive False
+                                                        
+                                                else:
+                                                    # Only calculate the cost if we actually need to draw the button
+                                                    $ cost_ap = action["cost"].get("ap", 0)
+                                                    $ can_afford = (action_points >= cost_ap)
+                                                    
+                                                    textbutton "[action['name']] (Cost: [cost_ap] AP)":
+                                                        action Return(action) 
+                                                        sensitive can_afford
