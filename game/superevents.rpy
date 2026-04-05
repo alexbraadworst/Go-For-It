@@ -5,7 +5,7 @@ label event_1848:
     
     "It is March of 1848. The people are in the streets."
 
-    "News from France abot the success of the February Revolution has compounded fanned frustration over widespread poverty, and the growth of liberal nationalism."
+    "News from France about the success of the February Revolution has fanned frustration over widespread crop failures, economic crisis, and the growth of liberal nationalism."
 
     "Now, liberals are calling for Prussia to reform into a constitutional monarchy that can lead the German Confederation into a national state for all Germans."
 
@@ -36,7 +36,11 @@ label event_1848:
 
             jump fail_1848_crackdown
     
-    "On March 21, King Friedrich Wilhelm IV initiates a change of course by announcing his support of the formation of an all-German parliament, riding through Berlin wearing a black-red-gold armband and giving impromptu speeches about his support for German unity."
+    scene bg 1848 king
+
+    "On March 21, King Friedrich Wilhelm IV initiates a change of course by announcing his support of the formation of an all-German parliament."
+    
+    "Riding through Berlin wearing a black-red-gold armband, he gives impromptu speeches about his support for German unity."
 
     "By the 29th, he appoints a liberal government which, on the 2nd of April, announces elections to form a Prussian National Assembly."
 
@@ -44,14 +48,47 @@ label event_1848:
 
     scene bg frankfurt parliament
 
-    "It is May. The delegates elected to the Assembly are largely representative of moderate liberalism: free speech, constitutional monarchy, religious tolerance, and the abolition of aristocratic privileges."
+    "It is May. The delegates elected to the Nationalversammlung are largely representative of moderate liberalism: free speech, constitutional monarchy, religious tolerance, and the abolition of aristocratic privileges."
 
+    "These delegates ignore calls from more radical elements such as the industrial workers, republicans, and socialists for any action more radical than that."
 
+    "On the 18th, these delegates solemnly make their way to the Paulskirche in Frankfurt for the first session."
 
+    jump event_1848_frankfurt
 
+label event_1848_frankfurt:
+    scene bg frankfurt parliament alt
+    
+    "Months pass, and it is now October. The National Assembly has convened once again at the Paulskirche in Frankfurt."
+    
+    "Hundreds of delegates are now arguing over borders, national unification, and the very definition of a 'German'."
+    
+    show prussia frustrated at left
+    
+    p "If I have to listen to one more liberal professor talk about Hegelian dialectics, I am going to march my infantry in here and clear the room."
+    
+    show austria smug at right
+    
+    a "Patience, Prussia. Statecraft requires elegance. Not that a barracks-state like you would understand."
+    
+    show prussia intense
+    
+    p "Cut the act, Austria. We all know why we're here. Are we building a 'Grossdeutschland' with you, or a 'Kleindeutschland' with me?"
+    
+    a "A Germany without Austria is no Germany at all. The southern states know this."
 
+    p "The deputies won't accept non-Germans within Germany. Your territories in Italy and Hungary will really upset the matter..."
 
+    a "We won't be giving up the empire. They'll have to settle the matter and accept those lands, or they can count us out."
+
+    p "I'll be damned..."
+    
+    "The tension in the room is palpable. You have a brief window to sway the delegates before the final debate, next year."
+
+    "Focus on building greater relationships with your fellow German states in the Relationships tab."
+    
     return
+
 
 label event_1862:
     # 1. Set the scene

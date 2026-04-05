@@ -22,15 +22,7 @@ default suitor_relations = {
     "Holstein": 40                 # The fully German half
 }
 
-# characters
-# states
-define p = Character("Prussia")
 
-# politicians
-define ovb = Character("Otto von Bismarck")
-
-# kings/royalty
-define fwiv = Character("Frederick William IV")
 
 
 # The game starts here.
@@ -57,6 +49,8 @@ label start:
     "In the post-Congress of Vienna world, you must tread lightly to avoid arousing the intervention of the Great Powers."
 
     "Remember to save often, because if you make the wrong choice it'll be game over :)"
+
+    "Sigh... A version that lets you do alt-history might come later. But it's EHAP, so..."
 
     "Best of luck!"
 

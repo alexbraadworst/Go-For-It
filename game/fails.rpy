@@ -9,3 +9,18 @@ label fail_1848_crackdown:
     "By the way, if you're salty about losing, remember to save next time..."
 
     $ MainMenu(confirm=False)()
+
+label fail_state_crown:
+    show prussia angry at center with vpunch
+    
+    p "Wait, why did I just say that?! My army isn't ready!"
+    
+    "Austria and Russia, terrified of a liberal, Prussian-led Germany, immediately mobilize."
+    "Prussia is invaded on two fronts and utterly dismantled. The King is forced to abdicate."
+    
+    p "We needed to isolate Austria diplomatically and reform the army first! Did you sleep through the entire unit on Realpolitik?!"
+    
+    "HISTORICAL INACCURACY DETECTED. F IN AP EURO."
+    
+    # Kick them to the main menu!
+    $ MainMenu(confirm=False)()
