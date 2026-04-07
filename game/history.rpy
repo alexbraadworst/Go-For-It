@@ -4,11 +4,18 @@ init python:
         1849: [
             {
                 "name": "Construct the Prussian State Telegraph",
-                "cost": {"ap": 2},
+                "cost": {"ap": 3},
                 "reward": {"blood": 10, "iron": 5, "threat": 5}, 
                 "target": "self_1849_telegraph"
+            },
+            {
+                "name": "Inaugurate the first session of the Prussian Landtag",
+                "cost": {"ap": 2},
+                "reward": {"max_ap": 2},
+                "target": "self_1849_landtag"
             }
         ],
+
         1862: [
             {
                 "name": "Deliver 'Blood and Iron' Speech",
@@ -35,7 +42,13 @@ init python:
             "name": "Fund Krupp Armaments",
             "cost": {"ap": 2},
             "reward": {"iron": 10, "threat": 5},
-            "target": "action_krupp"
+            "target": "self_krupp"
+        },
+        {
+            "name": "See to the Rail Lines",
+            "cost": {"ap": 1},
+            "reward": {"iron": 2},
+            "target": "self_rail"
         }
     ]
 
@@ -49,12 +62,20 @@ init python:
                 "target": "diplo_1848_duckwitz"
             }
         ],
+        1849: [
+            {
+                "name": "asdf",
+                "cost": {"ap": 2},
+                "reward": {"iron": 10},
+                "target": "diplo_1849_asdf"
+            }
+        ],
         1864: [
             {
                 "name": "Intervene in Schleswig-Holstein",
                 "cost": {"ap": 3},
                 "reward": {"blood": 15, "iron": 5, "threat": 20},
-                "target": "event_danish_war"
+                "target": "diplo_1864_danish_war"
             }
         ]
     }

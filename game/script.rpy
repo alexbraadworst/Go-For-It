@@ -29,15 +29,6 @@ default suitor_relations = {
 # The game starts here.
 
 label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
     
     "This is a game about the Unification of Germany."
 
@@ -57,7 +48,6 @@ label start:
 
     jump turn_start
 
-    # This ends the game.
 
 label turn_start:
     
@@ -65,16 +55,16 @@ label turn_start:
     # create the label name for the current year
     $ expected_label = "event_" + str(year)
 
-    # 3. Check if the event exists + haven't played it yet
+    # check if the event exists + haven't played it yet
     if renpy.has_label(expected_label) and year not in played_events:
         
-        # Mark as played so it doesn't loop infinitely
+        # mark as played so it doesn't loop infinitely
         $ played_events.append(year) 
         
-        # Call the event, will return here when finished.
+        # call the event + will return here when finished.
         call expression expected_label
 
-    # This will display the screen and pause until a Return() action is triggered
+    # will display the screen and pause until a Return() action is triggered
     scene bg prussia office
     call screen main_turn_screen
     
@@ -82,7 +72,7 @@ label turn_start:
 
     if chosen_action == "advance_year":
         $ year += 1
-        $ action_points = max_ap # Replace 5 with whatever their max AP should be!
+        $ action_points = max_ap
         $ actions_taken_this_year = []
         
         jump turn_start
@@ -92,11 +82,11 @@ label turn_start:
 
         $ actions_taken_this_year = actions_taken_this_year + [chosen_action["target"]]
 
-        # --- APPLY PROGRESSION & THREAT ---
         if "reward" in chosen_action:
             $ blood += chosen_action["reward"].get("blood", 0)
             $ iron += chosen_action["reward"].get("iron", 0)
             $ threat += chosen_action["reward"].get("threat", 0)
+            $ max_ap += chosen_action["reward"].get("max_ap", 0)
             
             # loops through every state in suitor list.
             python:
@@ -110,8 +100,7 @@ label turn_start:
                             suitor_relations[state] = 100
                         elif suitor_relations[state] < 0:
                             suitor_relations[state] = 0
-    
-    # --- DYNAMIC JUMP ---
+
     $ target_label = chosen_action["target"]
     jump expression target_label
 

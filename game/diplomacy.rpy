@@ -73,7 +73,7 @@ label diplo_1848_duckwitz:
     p "There is only one economic power in Germany that actually functions, the Zollverein."
     
     menu:
-        "Threaten to extend the Zollverein's borders. (Rally the south)":
+        "Threaten to extend the Zollverein's borders. (Rally the south to your side)":
             p "If you want actual protection from British industrial syndicates without begging London for scraps, my customs union is extending its borders next year."
             p "You either integrate your economies with mine, or you drown in cheap English iron. Choose."
             
@@ -103,3 +103,4 @@ label diplo_1848_duckwitz:
             
             jump turn_start
 
+# 1849

@@ -24,5 +24,4 @@ label fail_state_crown:
     "Prussia-chan drops your grade to a 0!"
     "By the way, if you're salty about losing, remember to save next time..."
     
-    # Kick them to the main menu!
     $ MainMenu(confirm=False)()

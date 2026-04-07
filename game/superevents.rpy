@@ -54,7 +54,7 @@ label event_1848:
 
     "On the 18th, these delegates solemnly make their way to the Paulskirche in Frankfurt for the first session."
 
-    scene bg frankfurt parliament alt
+    scene bg frankfurt parliament2
     
     "Months pass, and it is now October. The National Assembly has convened once again at the Paulskirche in Frankfurt."
     
@@ -82,15 +82,17 @@ label event_1848:
     
     "The tension in the room is palpable. You have a brief window to sway the delegates before the final debate, next year."
 
-    "Focus on building greater relationships with your fellow German states in the Relationships tab and Diplomacy tab."
+    "Focus on building greater relationships with your fellow German states in the Relationships tab, and be sure to take stock of policies in the Diplomacy tab."
     
     return
 
 label event_1849:
-    
+
     "April 1849. Prussian troops have crushed popular movements across the Confederation."
 
     "Friedrich Wilhelm IV has additionally reasserted his authority, dissolving the Prussian Constituent Assembly."
+
+    scene bg frankfurt parliament2
 
     "Despite all this, the Parliament has reconvened for the final vote on the constitution."
     
@@ -112,15 +114,15 @@ label event_1849:
     if suitor_relations.get("Bavaria", 0) >= 40 and suitor_relations.get("Baden-Wurttemberg", 0) >= 50:
         show prussia smug at left
         
-        p "Look at them. All those loudmouthed liberals and minor princes, finally falling in line."
+        p "Look at them. All those liberals and minor princes finally falling in line."
 
-        p "Bavaria is practically eating out of my hand, and Baden knows exactly who keeps their throne safe from republican mobs."
+        p "Bavaria is eating out of my hand, and Baden knows exactly who keeps their throne safe from republican mobs."
 
         show prussia joyful
         
-        p "Without the South, Austria's 'Grossdeutschland' is nothing but a phantom. They have no leverage left."
+        p "Without the South, Austria has no leverage left."
         
-        p "I played this perfectly. The Austrian Empire is locked out, and the lesser German states are exactly where they belong: under my wing."
+        p "I played this perfectly..."
         
         "The smaller states rally behind you. You have successfully isolated Austria from the rest of the Confederation."
         $ iron += 10
@@ -133,8 +135,10 @@ label event_1849:
         
         show prussia intense
         
-        p "But Baden... I should have marched down there and crushed that uprising myself instead of playing politics."
+        p "But Baden... I should have marched down there and crushed that uprising myself."
+
         p "A fragmented South is dangerous. I have the majority, but it's a messy, bleeding majority."
+
         p "Austria isn't gone for good. They're going to use this division against me later. I can already feel a headache coming on."
         
         "You secure the vote, but the lack of total southern unity leaves your flank exposed."
@@ -144,6 +148,7 @@ label event_1849:
         show prussia frustrated at left with vpunch
         
         p "Damn it. Damn it all."
+
         p "Bavaria is actively whispering with the Austrian delegation. I can see them glaring at me from across the aisles."
         
         show prussia sad
@@ -152,7 +157,7 @@ label event_1849:
         
         show prussia intense
         
-        p "Fine. If they won't be wooed by diplomacy and commerce... they'll have to be broken by iron. But that's a war I'm not ready for yet."
+        p "Fine. If they won't be wooed by diplomacy and commerce... they'll have to be broken by war. But that's a war I'm not ready for yet!"
         
         "You failed to secure the southern bloc. Austria looks incredibly smug as the states remain divided."
         $ iron -= 5
@@ -190,7 +195,6 @@ label event_1849:
             $ threat -= 15
             $ blood += 5
             
-            # Drops them safely back into the hub to start their 1849 turn!
             return
 
 
