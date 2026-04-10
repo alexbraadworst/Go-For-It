@@ -197,6 +197,8 @@ label event_1849:
             
             return
 
+label event_1850:
+    
 
 label event_1862:
     # 1. Set the scene

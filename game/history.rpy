@@ -4,18 +4,31 @@ init python:
         1849: [
             {
                 "name": "Construct the Prussian State Telegraph",
-                "cost": {"ap": 3},
+                "cost": {"ap": 2},
                 "reward": {"blood": 10, "iron": 5, "threat": 5}, 
                 "target": "self_1849_telegraph"
             },
             {
                 "name": "Inaugurate the first session of the Prussian Landtag",
                 "cost": {"ap": 2},
-                "reward": {"max_ap": 2},
+                "reward": {"max_ap": 1},
                 "target": "self_1849_landtag"
             }
         ],
-
+        1850: [
+            {
+                "name": "Ratify the revised Constitution of Prussia",
+                "cost": {"ap": 2},
+                "reward": {"max_ap": 1, "threat": -5}, 
+                "target": "self_1850_constitution"
+            },
+            {
+                "name": "Establish the Central Press Bureau",
+                "cost": {"ap": 2}, 
+                "reward": {"blood": 5, "threat": 10},
+                "target": "self_1850_police"
+            }
+        ],
         1862: [
             {
                 "name": "Deliver 'Blood and Iron' Speech",
@@ -64,10 +77,18 @@ init python:
         ],
         1849: [
             {
-                "name": "asdf",
-                "cost": {"ap": 2},
-                "reward": {"iron": 10},
-                "target": "diplo_1849_asdf"
+                "name": "Propose the Alliance of the Three Kings",
+                "cost": {"ap": 3},
+                "reward": {"iron": 15, "threat": 15}, # Attempting a conservative union
+                "target": "diplo_1849_three_kings"
+            }
+        ],
+        1850: [
+            {
+                "name": "Propose the Erfurt Union",
+                "cost": {"ap": 3},
+                "reward": {"iron": -5, "threat": -10},
+                "target": "diplo_1850_union"
             }
         ],
         1864: [
@@ -122,21 +143,43 @@ init python:
                 "target": "rel_1848_bavaria_scandal"
             },
             {
-                "name": "Reassure Hanover",
-                "cost": {"ap": 1},
-                "reward": {
-                    "affection_Hanover": 10,
-                    "iron": 5
-                },
-                "target": "rel_1848_hanover_panic"
-            },
-            {
                 "name": "Praise Mecklenburg for not rioting",
                 "cost": {"ap": 1},
                 "reward": {
                     "affection_Mecklenburg-Vorpommern": 10
                 },
                 "target": "rel_1848_mecklenburg_date"
+            }
+        ],
+        1849: [
+            {
+                "name": "Crush the May Uprising in Dresden",
+                "cost": {"ap": 2},
+                "reward": {
+                    "affection_Saxony": 20,
+                    "blood": 10,
+                    "threat": 10
+                },
+                "target": "rel_1849_uprising"
+            },
+            {
+                "name": "Help Baden (again)",
+                "cost": {"ap": 3},
+                "reward": {
+                    "affection_Bavaria": 15,
+                    "affection_Baden-Wurttemberg": 20, 
+                    "blood": 15
+                },
+                "target": "rel_1849_palatinate"
+            }
+        ],
+        1850: [
+            {
+                "name": "Bribe Saxony to stay in the Three Kings' Alliance",
+                "cost": {"ap": 2},
+                "req_affection": {"Saxony": 30},
+                "reward": {"affection_Saxony": 15, "iron": 5},
+                "target": "rel_1850_saxony_bribe"
             }
         ],
         1864: [

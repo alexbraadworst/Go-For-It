@@ -47,6 +47,8 @@ label self_1849_landtag:
     fwiv "Haha... yeah... people's will... anyway, there will be some pleasantries that you will have to get through, and then you'll yield the floor to me to open the session in earnest."
 
     show prussia embarrassed 
+
+    p "Wait, I have to do the pleasantries?! Aren't you the king!?"
     
     p "But what am I going to say? This happened on such short notice... I didn't even expect you to dismiss the first Parliament, and now you want me to open a new one?"
     
@@ -72,17 +74,124 @@ label self_1849_landtag:
 
     p "Damn it! Have some tact when I am speaking to you! I am Prussia!"
 
-    "Some of the deputies chuckled upon seeing this foot stamping reprimand from you. You decide to just keep going."
+    "Some of the deputies chuckled upon seeing this foot stamping reprimand from you."
+    
+    "You decide to just swallow your pride and keep going."
 
     p "As I was saying, we in the government recognize that reform is preferable to revolution."
     
     p "Therefore, in order to ensure our institutions remain coopera- I mean strong and robust to deal with all issues,"
 
-    p ""
+    show prussia intense
 
-
-
-label self_study:
-    p "Woa i need to study"
+    p "...We present this legislature. Don't make me regret giving you a voice!"
+    
     jump turn_start
 
+label self_1850_constitution:
+    
+
+    jump turn_start
+
+
+# Standard
+
+label self_study:
+    scene bg prussia study
+    
+    "You spend the evening by the fireplace, reading a leather-bound copy of Machiavelli's 'The Prince'."
+    
+    show prussia smug at center
+    
+    p "Ah, Machiavelli... The only one who truly understood power."
+
+    p "'It is better to be feared than loved.'"
+
+    p "Obviously. Love is fickle, amirite."
+    
+    p "Honestly, why even choose?"
+
+    p "If you terrify them enough, they'll eventually convince themselves it's love anyway."
+
+    show prussia serious
+    
+    p "Though frankly, his advice is a bit outdated."
+
+    p "Nowadays a powerful state relies on a conscripted standing army, not mercenaries."
+
+    show prussia joyful
+
+    p "Still... his chapter on the absolute destruction of rival republics will serve me well."
+    
+    "You close the book and feel sharper than ever."
+    
+    jump turn_start
+
+label self_drill:
+    scene bg parade ground
+    
+    "You spend the afternoon on the muddy parade grounds, personally overseeing the infantry maneuvers."
+    
+    show prussia intense with vpunch
+    
+    p "Shoulders back! Rifles steady! I want to hear those boots hit the dirt like drumbeats!"
+    
+    show prussia joyful
+    
+    p "Ah... Is there anything more cleansing for the soul?"
+
+    p "'Prussia is not a country with an army but an army with a country.' Well, I am enjoying the arrangement..."
+    
+    "The troops look exhausted, but their discipline is flawless."
+    
+    jump turn_hub
+
+label self_krupp:
+    scene bg factory
+    
+    "You travel to Essen to meet with Alfred Krupp and inspect his latest metallurgical prototypes."
+    
+    show prussia normal
+    
+    p "Herr Krupp. Please tell me you have something that can shatter an Austrian fortress from two miles away."
+    
+    "Krupp silently rolls out the blueprints for a new massive, breech-loading cast steel cannon."
+    
+    show prussia joyful with vpunch
+    
+    p "Oh... it's beautiful!" 
+    
+    p "Look at the caliber of that barrel!"
+    
+    show prussia joyful with vpunch
+    
+    p "Take my money!! Take all of it!!!!"
+    
+    "You authorize another massive state subsidy for the Krupp armaments factories."
+    
+    jump turn_hub
+
+label self_rail:
+    scene bg train station
+    
+    "You spend the day aggressively auditing the timetables of the new Prussian state railways."
+    
+    show prussia intense
+    
+    p "These schedules are completely unacceptable. Why are we prioritizing civilian passenger comfort over heavy freight?"
+    
+    show prussia frustrated with vpunch
+    
+    p "Every mile of track is an artery. They're not for weekend vacations!"
+    
+    show prussia intense
+    
+    p "I want these lines optimized to haul Krupp steel and Ruhr coal by day, and entire infantry corps by night."
+    
+    show prussia smug
+    
+    p "Our economy and our army are going to ride the exact same rails. Make sure the trains run on time."
+    
+    "You optimize the logistics network, accelerating both industrial growth and military mobilization."
+    
+    jump turn_hub
