@@ -4,7 +4,7 @@ default year = 1848
 default action_points = 8
 default actions_taken_this_year = []
 default max_ap = 8
-default played_events = [] # A list to track which years we've already seen
+default played_events = []
 
 # stats
 default blood = 10
@@ -28,11 +28,19 @@ default suitor_relations = {
 
 # The game starts here.
 
-label start:
+label start:   
+    scene black
     
     "This is a game about the Unification of Germany."
 
+    "It runs from the Revolutions of 1848 all the way to up to 1871."
+
     "You are Prussia, one of the strongest German states around, and a state with a feared army and a rapidly growing economy."
+    
+    show prussia smug at center 
+    with easeinright
+    
+    p "Hola."
 
     "Throughout this game, you must use your wits and skills of persuasion to become the unifier of Germany."
 
@@ -44,13 +52,36 @@ label start:
 
     "Sigh... A version that lets you do alt-history might come later. But it's EHAP, so..."
 
-    "Best of luck!"
+    "We love you Ms Garafola... please give us a 100..."
+
+    "Everything in the 'historical choices' section of each menu is an actual historical event that could be of importance to you."
+
+    "They'll be important for game progression, so keep an eye out!"
+
+    "If you don't manage to get through all of them, you can always play through them in another playthrough. You don't need to complete all of them to win."
+
+    show prussia joyful
+    p "Don't take this too seriously, and best of luck!"
 
     jump turn_start
 
 
 label turn_start:
+
+    if year == 1848:
+        play music ["music/revolutionaryetude.ogg"] fadeout 2.0 fadein 1.0 if_changed
+        
+    elif year == 1851:
+        play music ["music/diemoldau.ogg",] fadeout 2.0 fadein 1.0 if_changed
+        
+    elif year == 1862:
+        play music ["music/hohenfriedberger.ogg", "music/vondertann.ogg", "music/grussankiel.ogg", "music/petersburger.ogg"] fadeout 2.0 fadein 1.0 if_changed
     
+    elif year == 1867:
+        play music ["music/koniggratzermarch.ogg", "music/altekameraden.ogg"] fadeout 2.0 fadein 1.0 if_changed
+
+    elif year == 1870:
+        play music ["preussensgloria.ogg"] fadeout 2.0 fadein 1.0 if_changed
 
     # create the label name for the current year
     $ expected_label = "event_" + str(year)

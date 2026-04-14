@@ -25,8 +25,48 @@ init python:
             {
                 "name": "Establish the Central Press Bureau",
                 "cost": {"ap": 2}, 
-                "reward": {"blood": 5, "threat": 10},
+                "reward": {"blood": 15, "threat": 5},
                 "target": "self_1850_police"
+            }
+        ],
+        1851: [
+            {
+                "name": "Charter the Disconto-Gesellschaft",
+                "cost": {"ap": 2},
+                "reward": {"iron": 15}, 
+                "target": "self_1851_banking"
+            }
+        ],
+        1853: [
+            {
+                "name": "Purchase the Jade Bight (Naval Base)",
+                "cost": {"ap": 2},
+                "reward": {"threat": 5, "iron": 5, "blood": 15}, 
+                "target": "self_1853_jade_bight"
+            }
+        ],
+        1855: [
+            {
+                "name": "Subsidize Ruhr Valley Deep-Shaft Mining",
+                "cost": {"ap": 3},
+                "reward": {"iron": 20, "max_ap": 1}, 
+                "target": "self_1855_ruhr_mining"
+            }
+        ],
+        1858: [
+            {
+                "name": "Declare the 'New Era' (Regency of Wilhelm I)",
+                "cost": {"ap": 4},
+                "reward": {"max_ap": 2, "threat": -10},
+                "target": "self_1858_new_era"
+            }
+        ],
+        1860: [
+            {
+                "name": "Draft the Roon Army Reform Bill (Pt. 1)",
+                "cost": {"ap": 6},
+                "reward": {"blood": 40, "threat": 20},
+                "target": "self_1860_army_reform"
             }
         ],
         1862: [
@@ -69,26 +109,36 @@ init python:
     historical_diplomacy = {
         1848: [
             {
-                "name": "Discuss Duckwitz's Tariff Plan",
+                "name": "Rally the South",
                 "cost": {"ap": 2},
                 "reward": {"iron": 10},
                 "target": "diplo_1848_duckwitz"
             }
         ],
-        1849: [
-            {
-                "name": "Propose the Alliance of the Three Kings",
-                "cost": {"ap": 3},
-                "reward": {"iron": 15, "threat": 15}, # Attempting a conservative union
-                "target": "diplo_1849_three_kings"
-            }
-        ],
         1850: [
             {
-                "name": "Propose the Erfurt Union",
+                "name": "Ratify the Peace of Berlin with Denmark",
+                "cost": {"ap": 2},
+                "reward": {
+                    "threat": -10, 
+                    "affection_Schleswig": -15, 
+                    "affection_Holstein": -15
+                }, 
+                "target": "diplo_1850_denmark_peace"
+            }
+        ],
+        1851: [
+            {
+                "name": "Formally Re-enter the Federal Diet",
+                "cost": {"ap": 1},
+                "reward": {"iron": -5, "blood": -10, "threat": -15},
+                "target": "diplo_1851_federal_diet"
+            },
+            {
+                "name": "Weaponize the Zollverein",
                 "cost": {"ap": 3},
-                "reward": {"iron": -5, "threat": -10},
-                "target": "diplo_1850_union"
+                "reward": {"iron": 20, "threat": 10}, 
+                "target": "diplo_1851_zollverein_expansion"
             }
         ],
         1864: [
@@ -160,10 +210,10 @@ init python:
                     "blood": 10,
                     "threat": 10
                 },
-                "target": "rel_1849_uprising"
+                "target": "rel_1849_dresden"
             },
             {
-                "name": "Help Baden (again)",
+                "name": "Intervene against the Palatine Uprising",
                 "cost": {"ap": 3},
                 "reward": {
                     "affection_Bavaria": 15,
@@ -171,15 +221,15 @@ init python:
                     "blood": 15
                 },
                 "target": "rel_1849_palatinate"
-            }
-        ],
-        1850: [
+            },
             {
-                "name": "Bribe Saxony to stay in the Three Kings' Alliance",
-                "cost": {"ap": 2},
-                "req_affection": {"Saxony": 30},
-                "reward": {"affection_Saxony": 15, "iron": 5},
-                "target": "rel_1850_saxony_bribe"
+                "name": "Help Baden (Again)",
+                "cost": {"ap": 3},
+                "reward": {
+                    "affection_Baden-Wurttemberg": 20, 
+                    "blood": 15
+                },
+                "target": "rel_1849_baden"
             }
         ],
         1864: [
