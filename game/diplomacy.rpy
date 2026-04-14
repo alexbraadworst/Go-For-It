@@ -323,7 +323,7 @@ label diplo_1851_zollverein_expansion:
 
     "Suddenly, the double doors to the boardroom are violently thrown open."
 
-    play sound "sfx/door_slam.wav"
+    play sound "sfx/door_slam.ogg"
     with hpunch
 
     show austria frustrated at center

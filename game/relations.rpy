@@ -476,7 +476,7 @@ label rel_1849_dresden:
 
     p "Now, where were we? Ah, yes. CRUSHING THE INSOLENT REBELS!"
 
-    play sound "sfx/knocking.wav"
+    play sound "sfx/knocking.ogg"
     with hpunch
 
     "The barricaded door rattles violently. Angry shouting echoes from the hallway."
@@ -601,7 +601,7 @@ label rel_1849_palatinate:
 
     "Prussia's armies, commanded by General Moritz von Hirschfeld, sweep through the Palatinate with terrifying, mechanical efficiency."
 
-    play sound "sfx/artillery.wav"
+    play sound "sfx/artillery.ogg"
     with hpunch
 
     p "Target the barricades at Kaiserslautern! Do not give them a moment to breathe!"

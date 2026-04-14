@@ -418,8 +418,8 @@ label self_1855_ruhr_mining:
 
     scene bg mine
     with fade
-    play sound "sfx/factory.wav" loop
-    play music "sfx/factory2.wav"
+    play sound "sfx/factory.ogg" loop
+    play music "sfx/factory2.ogg"
 
     show prussia joyful at center
 
